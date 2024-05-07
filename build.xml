@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Parameter:
+
+	build.tools.dir:         Verzeichnis des Build-Tools-Projekts
+	build.modules.dir:       Verzeichnis der Module
+	build.help.work.dir:     Ausgabeverzeichnis
+
+-->
+
+<project name="lucy" default="upt.build">
+	<property name="build.project.title" value="Lucy"/>
+	<property name="build.project.name"  value="lucy"/>
+
+	<!-- Build help files -->
+	<target name="target.build.help">
+		<tstamp>
+			<format property="DATE" pattern="yyyy-MM-dd"/>
+			<format property="TIME" pattern="HH.mm"/>
+		</tstamp>
+
+		<javadoc
+			failonerror="true"
+			maxmemory="1024m"
+			packagenames="de.uplanet.*"
+			access="private"
+			author="true"
+			version="true"
+			verbose="false"
+			useexternalfile="true"
+			Encoding="UTF-8"
+			additionalparam="-J-Dbuild.help.todo.dir=${build.help.todo.dir} -J-Dbuild.help.done.dir=${build.help.done.dir} --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED --add-exports=java.desktop/sun.swing=ALL-UNNAMED --add-exports=java.base/sun.security.provider=ALL-UNNAMED --add-exports=java.base/sun.security.x509=ALL-UNNAMED --add-exports=java.base/sun.security.pkcs=ALL-UNNAMED --add-exports=java.base/sun.security.util=ALL-UNNAMED --add-exports=java.base/sun.nio.cs=ALL-UNNAMED --add-exports=java.xml/com.sun.org.apache.xml.internal.serializer=ALL-UNNAMED">
+			<classpath>
+				<fileset dir="${build.modules.dir}/common/lib">
+					<include name="*.jar"/>
+				</fileset>
+				<fileset dir="${build.modules.dir}/common-fx/lib">
+					<include name="*.jar"/>
+				</fileset>
+				<fileset dir="${build.modules.dir}/common-fx/lib/javafx/lib">
+					<include name="*.jar"/>
+				</fileset>
+				<fileset dir="${build.modules.dir}/common-solr/lib">
+					<include name="*.jar"/>
+				</fileset>
+				<fileset dir="${build.modules.dir}/server-common/lib">
+					<include name="*.jar"/>
+				</fileset>
+				<fileset dir="${build.modules.dir}/server/lib">
+					<include name="*.jar"/>
+				</fileset>
+				<fileset dir="${build.modules.dir}/server-reports/lib">
+					<include name="*.jar"/>
+				</fileset>
+				<fileset dir="${build.modules.dir}/client/lib">
+					<include name="*.jar"/>
+				</fileset>
+				<fileset dir="${build.modules.dir}/connector-notes/lib">
+					<include name="*.jar"/>
+				</fileset>
+				<fileset dir="${build.modules.dir}/connector-sbo/lib">
+					<include name="*.jar"/>
+				</fileset>
+				<fileset dir="${build.modules.dir}/connector-dghyparchive/lib">
+					<include name="*.jar"/>
+				</fileset>
+				<fileset dir="${build.modules.dir}/downloadmanager/deliverables">
+					<include name="*.jar"/>
+				</fileset>
+			</classpath>
+			<sourcepath>
+				<pathelement path="${build.modules.dir}/auxiliaries/src/main/java"/>
+				<pathelement path="${build.modules.dir}/client/src/main/java"/>
+				<pathelement path="${build.modules.dir}/client-hana/src/main/java"/>
+				<pathelement path="${build.modules.dir}/client-solr/src/main/java"/>
+				<pathelement path="${build.modules.dir}/common/src/main/java"/>
+				<pathelement path="${build.modules.dir}/common-application-api/src/main/java"/>
+				<pathelement path="${build.modules.dir}/common-fx/src/main/java"/>
+				<pathelement path="${build.modules.dir}/common-hana/src/main/java"/>
+				<pathelement path="${build.modules.dir}/common-solr/src/main/java"/>
+				<pathelement path="${build.modules.dir}/common-ui/src/main/java"/>
+				<pathelement path="${build.modules.dir}/connector-dghyparchive/src/main/java"/>
+				<pathelement path="${build.modules.dir}/connector-dghyparchive-client/src/main/java"/>
+				<pathelement path="${build.modules.dir}/connector-exchange/src/main/java"/>
+				<pathelement path="${build.modules.dir}/connector-mfiles/src/main/java"/>
+				<pathelement path="${build.modules.dir}/connector-mfiles-client/src/main/java"/>
+				<pathelement path="${build.modules.dir}/connector-notes/src/main/java"/>
+				<pathelement path="${build.modules.dir}/connector-office365/src/main/java"/>
+				<pathelement path="${build.modules.dir}/connector-office365-client/src/main/java"/>
+				<pathelement path="${build.modules.dir}/connector-sbo/src/main/java"/>
+				<pathelement path="${build.modules.dir}/connector-sap/src/main/java"/>
+				<pathelement path="${build.modules.dir}/installer/src/main/java"/>
+				<pathelement path="${build.modules.dir}/lnf-flat/src/main/java"/>
+				<pathelement path="${build.modules.dir}/mailservice/src/main/java"/>
+				<pathelement path="${build.modules.dir}/ou-installer-client/src/main/java"/>
+				<pathelement path="${build.modules.dir}/ou-installer-common/src/main/java"/>
+				<pathelement path="${build.modules.dir}/ou-installer-server/src/main/java"/>
+				<pathelement path="${build.modules.dir}/patch-common/src/main/java"/>
+				<pathelement path="${build.modules.dir}/portal-builder-common/src/main/java"/>
+				<pathelement path="${build.modules.dir}/portal-builder-fx/src/main/java"/>
+				<pathelement path="${build.modules.dir}/portal-builder-local/src/main/java"/>
+				<pathelement path="${build.modules.dir}/push-protocol/src/main/java"/>
+				<pathelement path="${build.modules.dir}/schools/src/main/java"/>
+				<pathelement path="${build.modules.dir}/server/src/main/java"/>
+				<pathelement path="${build.modules.dir}/server-admin/src/main/java"/>
+				<pathelement path="${build.modules.dir}/server-application-api/src/main/java"/>
+				<pathelement path="${build.modules.dir}/server-common/src/main/java"/>
+				<pathelement path="${build.modules.dir}/server-plugins/src/main/java"/>
+				<pathelement path="${build.modules.dir}/server-reports/src/main/java"/>
+				<pathelement path="${build.modules.dir}/server-share/src/main/java"/>
+				<pathelement path="${build.modules.dir}/server-solr/src/main/java"/>
+			</sourcepath>
+
+			<doclet name="de.uplanet.build.OnlineHelpDoclet" path="${build.tools.dir}/build/libs/build-tools-2.0.0.jar"/>
+		</javadoc>
+	</target>
+
+	<target name="upt.build">
+		<echo>Project:              ${ant.project.name}</echo>
+		<echo>Java version:         ${ant.java.version}, ${ant.version}</echo>
+		<echo>Base directory:       ${basedir}</echo>
+		<echo>Targets:              ${ant.project.invoked-targets}</echo>
+		<echo>Parameters:</echo>
+		<echo>build.tools.dir       ${build.tools.dir}</echo>
+		<echo>build.modules.dir     ${build.modules.dir}</echo>
+		<echo>build.help.work.dir   ${build.help.work.dir}</echo>
+
+		<antcall target="target.build.help"/>
+	</target>
+
+</project>
